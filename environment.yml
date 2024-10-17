@@ -1,0 +1,26 @@
+name: tokenmol
+
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - dglteam/label/th23_cu118
+
+dependencies:
+  - python ==3.10
+  - pip
+  - tqdm
+
+  # Scientific
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+
+  # Misc
+  - adjustText
+  - h5py
+  - cmake
+  - watermark 
+  - pytz
+  - pydantic
