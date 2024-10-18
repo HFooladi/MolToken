@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "TokenMol"
+name = "MolToken"
 authors = [
   {name="Hosein Fooladi", email="fooladi.hosein@gmail.com"}
 ]
@@ -31,18 +31,18 @@ test = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/HFooladi/TokenMol"
-"Bug Tracker" = "https://github.com/HFooladi/TokenMol/issues"
+"Homepage" = "https://github.com/HFooladi/MolToken"
+"Bug Tracker" = "https://github.com/HFooladi/MolToken/issues"
 
 [project.readme]
 file="README.md"
 content-type = "text/markdown"
 
 [tool.setuptools]
-packages = ["tokenmol"]
+packages = ["moltoken"]
 
 [tool.setuptools_scm]
-write_to = "tokenmol/_version.py"
+write_to = "moltoken/_version.py"
 
 [tool.black]
 line-length = 110

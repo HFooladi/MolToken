@@ -1,8 +1,8 @@
-site_name: "TokenMol"
-site_description: "TokenMol:  3D Tokenization In Molecular Space"
-site_url: "https://github.com/HFooladi/TokenMol"
-repo_url: "https://github.com/HFooladi/TokenMol"
-repo_name: "HFooladi/DGMol"
+site_name: "MolToken"
+site_description: "MolToken:  3D Tokenization In Molecular Space"
+site_url: "https://github.com/HFooladi/MolToken"
+repo_url: "https://github.com/HFooladi/MolToken"
+repo_name: "HFooladi/MolToken"
 copyright: Copyright 2024 Hosein Fooladi
 
 remote_branch: "gh-pages"
@@ -74,7 +74,7 @@ markdown_extensions:
       pygments_lang_class: true
 
 watch:
-  - tokenmol/
+  - moltoken/
 
 plugins:
   - search
