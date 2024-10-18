@@ -1,5 +1,5 @@
 site_name: "MolToken"
-site_description: "MolToken:  3D Tokenization In Molecular Space"
+site_description: "MolToken:  A 3D molecular tokenization tool for enhanced structural representation in cheminformatics."
 site_url: "https://github.com/HFooladi/MolToken"
 repo_url: "https://github.com/HFooladi/MolToken"
 repo_name: "HFooladi/MolToken"
@@ -85,7 +85,7 @@ plugins:
           setup_commands:
             - import sys
             - sys.path.append("docs")
-            - sys.path.append("themap")
+            - sys.path.append("moltoken")
           options:
             show_root_heading: yes
             heading_level: 3
