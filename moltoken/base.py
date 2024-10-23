@@ -3,11 +3,17 @@ import unicodedata
 # -----------------------------------------------------------------------------
 # a few helper functions useful for both BasicTokenizer and RegexTokenizer
 
-def get_stats(ids, counts=None):
+def get_stats(ids: list, counts=None) -> dict:
     """
     Given a list of integers, return a dictionary of counts of consecutive pairs
     Example: [1, 2, 3, 1, 2] -> {(1, 2): 2, (2, 3): 1, (3, 1): 1}
     Optionally allows to update an existing dictionary of counts
+
+    Args:
+        ids (list): list of integers.
+
+    Return:
+        dict: dictionary of counts of consecutive pairs
     """
     counts = {} if counts is None else counts
     for pair in zip(ids, ids[1:]): # iterate consecutive elements
@@ -15,11 +21,19 @@ def get_stats(ids, counts=None):
     return counts
 
 
-def merge(ids, pair, idx):
+def merge(ids: list, pair: tuple, idx: int) -> list:
     """
     In the list of integers (ids), replace all consecutive occurrences
     of pair with the new integer token idx
     Example: ids=[1, 2, 3, 1, 2], pair=(1, 2), idx=4 -> [4, 3, 4]
+
+    Args:
+        ids (list): list of integers (ids)
+        pair (tuple)
+        idx (int): the new integer token idx
+    
+    Return:
+        list: new list with replaced all consecutive occurrences of pair with the new integer token idx
     """
     newids = []
     i = 0
@@ -60,7 +74,11 @@ class Tokenizer:
     """Base class for Tokenizers"""
 
     def __init__(self):
-        pass
+        # default: vocab size of 256 (all bytes), no merges, no patterns
+        self.merges = {} # (int, int) -> int
+        self.pattern = "" # str
+        self.special_tokens = {} # str -> int, e.g. {'<|endoftext|>': 100257}
+        self.vocab = self._build_vocab() # int -> bytes
 
 
     def train(self, text, vocab_size, verbose=False):
