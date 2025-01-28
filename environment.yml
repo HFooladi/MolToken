@@ -24,3 +24,18 @@ dependencies:
   - watermark 
   - pytz
   - pydantic
+
+  # Chemistry-specific
+  - rdkit
+  - openbabel
+  - networkx
+  
+  # Deep Learning
+  - torch
+  - torch-geometric
+  - torch-scatter
+  - torch-sparse
+  
+  # Visualization
+  - py3Dmol
+  - nglview
