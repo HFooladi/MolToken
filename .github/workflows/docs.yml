@@ -1,0 +1,50 @@
+name: Documentation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Set up Conda
+      uses: conda-incubator/setup-miniconda@v3
+      with:
+        auto-activate-base: false
+        activate-environment: moltoken
+        environment-file: environment.yml
+        python-version: '3.10'
+        
+    - name: Install dependencies
+      shell: bash -l {0}
+      run: |
+        conda activate moltoken
+        pip install -e ".[test]"
+        pip install mkdocs mkdocs-material mkdocstrings[python] mkdocs-jupyter mike
+        
+    - name: Build documentation
+      shell: bash -l {0}
+      run: |
+        conda activate moltoken
+        mkdocs build
+        
+    - name: Deploy documentation
+      if: github.ref == 'refs/heads/main'
+      shell: bash -l {0}
+      run: |
+        conda activate moltoken
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        mike deploy --push --update-aliases dev
+        mike set-default --push dev
